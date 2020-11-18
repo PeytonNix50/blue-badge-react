@@ -31,7 +31,7 @@ const Auth = (props) => {
       },
       body: JSON.stringify(body)
     }).then(r => r.json())
-      .then(rObj => props.updateToken(rObj.sessionToken))
+      .then(rObj => props.updateToken(rObj.sessionToken, rObj.user.id))
   }
 
   const signupFields = () => {

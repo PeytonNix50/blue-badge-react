@@ -14,11 +14,13 @@ import React from 'react';
 //     NavbarText
 //   } from 'reactstrap';
   import Logout from './Logout/Logout';
+  import {Link} from 'react-router-dom';
 
 const Navbar = (props) => {
     return(
         <div>
             <nav>
+                <Link to="/create"><button>Create Review</button></Link>
                 <Logout clearToken={props.clearToken} />
             </nav>
         </div>

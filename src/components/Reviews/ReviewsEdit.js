@@ -1,14 +1,32 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {useHistory} from 'react-router-dom';
 
-const ReviewsCreate = (props) => {
 
-    const [trailName, setTrailName] = useState('')
-    const [rating, setRating] = useState('')
-    const [location, setLocation] = useState('')
-    const [description, setDescription] = useState('')
-    const [date, setDate] = useState('')
+
+const ReviewsEdit = (props) => {
+
+    const [trailName, setTrailName] = useState('');
+    const [rating, setRating] = useState('');
+    const [location, setLocation] = useState('');
+    const [description, setDescription] = useState('');
+    const [date, setDate] = useState(''); 
     const history = useHistory()
+
+    const [showEdit, setShowEdit] = useState(false);
+
+    const toggle = () => setShowEdit(!showEdit);
+
+
+    // const editReviews = (rev) => {
+    //     fetch(`http://localhost:8080/reviews/${props.rev.id}`, {
+    //         method: 'PUT',
+    //         headers: new Headers({
+    //             'Content-Type': 'application/json',
+    //             'Authorization': props.token
+    //         })
+    //     })
+    //     // .then(() => props.fetchReviews())
+    // }
 
     const resetForm = (e) => {
         setTrailName('')
@@ -19,6 +37,7 @@ const ReviewsCreate = (props) => {
     }
 
     const handleSubmit = (e) => {
+        e.preventDefault()
         const body = {
             name: trailName,
             rating: rating,
@@ -26,8 +45,8 @@ const ReviewsCreate = (props) => {
             description: description,
             date: date
         }
-        fetch('http://localhost:8080/reviews/', {
-            method: 'POST',
+        fetch(`http://localhost:8080/reviews/${props.rev}`, {
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': props.sessionToken
@@ -38,12 +57,14 @@ const ReviewsCreate = (props) => {
               console.log(rObj)
               resetForm()
               history.push('/')
-            //   fetchReviews()
+              props.fetchReviews()
           })
     }
 
     return (
-        <div>
+    <div>
+        <button type="button" onClick={toggle}>Edit Review</button>
+        {showEdit?
             <form>
                 <label htmlFor='trailName'>Trail Name:</label>
                 <input id='trailName' value={trailName} onChange={e => setTrailName(e.target.value)} />
@@ -63,8 +84,10 @@ const ReviewsCreate = (props) => {
                 <button id='resetForm' onClick={resetForm} type='button'>Reset Review</button>
                 <button id="submitReview" onClick={handleSubmit} type="button">Submit Review!</button>
             </form>
-        </div>
-    )
+            : null}
+    </div>
+    );
+    
 }
 
-export default ReviewsCreate
+export default ReviewsEdit;
