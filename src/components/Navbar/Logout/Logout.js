@@ -1,4 +1,5 @@
 import React from 'react';
+import {Button} from 'reactstrap';
 
 
 const Logout = (props) => {
@@ -7,7 +8,7 @@ const Logout = (props) => {
     }
     return(
         <div>
-            <button id='logout' onClick={logout}>Logout</button>
+            <Button color='danger' id='logout' onClick={logout}>Logout</Button>
         </div>
     )
 }

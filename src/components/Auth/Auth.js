@@ -62,7 +62,7 @@ const Auth = (props) => {
       <br/>
       <label htmlFor="password">Password</label>
       <br/>
-      <input type="password" id="password" value={password} onChange={e => setPassword(e.target.value)} />
+      <input type="password" id="password"  value={password} onChange={e => setPassword(e.target.value)} />
       <br/>
       {signupFields()}
       <br/>
