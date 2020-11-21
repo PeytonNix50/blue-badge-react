@@ -52,7 +52,7 @@ const Auth = (props) => {
     }
   }
 
-  return (
+    return (
     <form>
       <h1>{ login ? 'Login' : 'Signup' }</h1>
 
@@ -69,7 +69,10 @@ const Auth = (props) => {
       <button type="button" onClick={loginToggle}>{login ? "Click Here to Register" : "Click Here to Login"}</button>
       <button onClick={handleSubmit}>Submit</button>
     </form>
+
   )
+
+
 }
 
 export default Auth
