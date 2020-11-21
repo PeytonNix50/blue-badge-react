@@ -5,36 +5,25 @@ import './ReviewsList.css';
 
 const ReviewsList = (props) => {
 
-    const [reviews, setReviews] = useState([])
+    // const [reviews, setReviews] = useState([])
     
 
     useEffect(
         () => {
-            fetchReviews()
+            props.fetchReviews()
         }, []
     )
 
-    const fetchReviews = () => {
-        fetch('http://localhost:8080/reviews', {
-            method: 'GET'
-        }).then(r => r.json())
-          .then(rArr => setReviews(rArr))
-    }
-
-    // const deleteReviews = (reviews) => {
-    //     fetch(`http://localhost:8080/reviews/${reviews.id}`, {
-    //         method: 'DELETE',
-    //         headers: new Headers({
-    //             'Content-Type': 'application/json',
-    //             'Authorization': props.token
-    //         })
-    //     })
-    //     .then(() => fetchReviews())
+    // const fetchReviews = () => {
+    //     fetch('http://localhost:8080/reviews', {
+    //         method: 'GET'
+    //     }).then(r => r.json())
+    //       .then(rArr => setReviews(rArr))
     // }
 
     return(
         <div className="cardDiv">
-            {reviews.map((revObj, i) => <ReviewsItem fetchReviews={props.fetchReviews} rev={revObj} key={i} userId={props.userId} />)}
+            {props.reviews.map((revObj, i) => <ReviewsItem fetchReviews={props.fetchReviews} rev={revObj} key={i} userId={props.userId} />)}
         </div>
     )
 }

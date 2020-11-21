@@ -54,11 +54,11 @@ function App() {
                   <ReviewsCreate fetchReviews={fetchReviews} sessionToken={sessionToken} />
                 </Route>
                 <Route path="/">
-                  <ReviewsList userId={userId} fetchReviews={fetchReviews} />
+                  {/* <ReviewsList userId={userId} fetchReviews={fetchReviews} /> */}
                 </Route>
               </Switch> }
               <br />
-              <ReviewsList />
+              <ReviewsList userId={userId} fetchReviews={fetchReviews} reviews={reviews} />
             </Router>
           </div>
       );

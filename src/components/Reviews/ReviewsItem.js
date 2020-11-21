@@ -4,7 +4,7 @@ import {
     Card, CardImg, CardText, CardBody,
     CardTitle, CardSubtitle, Button, Row, Col
   } from 'reactstrap';
-
+import './ReviewsItem.css';
 
 const ReviewsItem = (props) => {
 
@@ -20,10 +20,10 @@ const ReviewsItem = (props) => {
 
 
     return (
-        <div>
+        <div className="cardDiv">
             <Row>
-                <Col sm="3">
-                <Card body inverse style={{backgroundColor: '#333', borderColor: '#333'}}>
+                <Col xs="7">
+                <Card body inverse style={{backgroundColor: '#333', borderColor: '#333', opacity:'0.8', borderRadius:'75px'}}>
                     <CardBody body className="text-center">
                     <CardTitle tag='h5'>{props.rev.trailName}</CardTitle>
                     <br />
@@ -35,10 +35,11 @@ const ReviewsItem = (props) => {
                     <br />
                     <CardSubtitle tag="h6">Date: {props.rev.date}</CardSubtitle>
                     <br />
-                    {props.rev.owner ===  props.userId ? <Button color= "danger" id='deleteReview' onClick={() => {deleteReviews(props.rev)}} type='button'>Delete Review</Button>  : <div></div>}
+                    {props.rev.owner ===  props.userId ? <Button color= "danger" id='deleteReview' onClick={e =>
+                    window.confirm("Are you sure you wish to delete this item?") && deleteReviews(props.rev)} type='button'>Delete Review</Button>  : <div></div>}
                     <br />
                     <br />
-                    {props.rev.owner ===  props.userId ? <ReviewsEdit fetchReviews={props.fetchReviews} rev={props.rev.id} /> : <div></div>}
+                    {props.rev.owner ===  props.userId ? <ReviewsEdit fetchReviews={props.fetchReviews} rev={props.rev} /> : <div></div>}
                     </CardBody>
                 </Card>
             </Col>

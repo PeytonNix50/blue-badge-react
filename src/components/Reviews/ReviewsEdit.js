@@ -2,17 +2,13 @@ import React, {useState} from 'react';
 import {useHistory} from 'react-router-dom';
 import {Button} from 'reactstrap';
 
-function refreshPage() {
-    window.location.reload(false);
-  }
-
 const ReviewsEdit = (props) => {
 
-    const [trailName, setTrailName] = useState('');
-    const [rating, setRating] = useState('');
-    const [location, setLocation] = useState('');
-    const [description, setDescription] = useState('');
-    const [date, setDate] = useState(''); 
+    const [trailName, setTrailName] = useState(props.rev.trailName);
+    const [rating, setRating] = useState(props.rev.rating);
+    const [location, setLocation] = useState(props.rev.location);
+    const [description, setDescription] = useState(props.rev.description);
+    const [date, setDate] = useState(props.rev.date); 
     const history = useHistory()
 
     const [showEdit, setShowEdit] = useState(false);
@@ -42,13 +38,14 @@ const ReviewsEdit = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault()
         const body = {
-            name: trailName,
-            rating: rating,
-            location: location,
-            description: description,
-            date: date
+            trailName: trailName || props.rev.trailName,
+            rating: rating || props.rev.rating,
+            location: location || props.rev.location,
+            description: description || props.rev.description,
+            date: date || props.rev.date
         }
-        fetch(`http://localhost:8080/reviews/${props.rev}`, {
+
+        fetch(`http://localhost:8080/reviews/${props.rev.id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -61,33 +58,33 @@ const ReviewsEdit = (props) => {
               resetForm()
               history.push('/')
               props.fetchReviews()
-              refreshPage();
+            //   refreshPage();
           }) 
     
     }
 
     return (
     <div>
-        <Button type="button" onClick={toggle}>Edit Review</Button>
+        <Button color="warning" type="button" onClick={toggle}>Edit Review</Button>
         {showEdit?
-            <form>
-                <label htmlFor='trailName'>Trail Name:</label>
-                <input id='trailName' value={trailName} onChange={e => setTrailName(e.target.value)} required />
+            <form style={{textAlign:'left', marginLeft:'200px', marginTop:'25px'}}>
+                <label style={{width:'125px'}} htmlFor='trailName'>Trail Name:</label>
+                <input placeholder='Ex: Pacific Crest Trail' style={{borderRadius:'10px'}} id='trailName' value={trailName} onChange={e => setTrailName(e.target.value)} required />
                 <br />
-                <label htmlFor='rating'>Rating:</label>
-                <input id='rating' value={rating} onChange={e => setRating(e.target.value)} required/>
+                <label style={{width:'125px'}} htmlFor='rating'>Rating:</label>
+                <input style={{borderRadius:'10px', width:'185px'}} id='rating' value={rating} onChange={e => setRating(e.target.value)} type="number" min="1" max="5" placeholder='Give a Rating 1-5' required/>
                 <br />
-                <label htmlFor='location'>Location:</label>
-                <input id='location' value={location} onChange={e => setLocation(e.target.value)} required/>
+                <label style={{width:'125px'}} htmlFor='location'>Location:</label>
+                <input placeholder='Ex: California' style={{borderRadius:'10px'}} id='location' value={location} onChange={e => setLocation(e.target.value)} required/>
                 <br />
-                <label htmlFor='description'>Review:</label>
-                <input id='description' value={description} onChange={e => setDescription(e.target.value)} required/>
+                <label style={{width:'125px'}} htmlFor='description'>Review:</label>
+                <input placeholder='Type Your Review' style={{borderRadius:'10px'}} id='description' value={description} onChange={e => setDescription(e.target.value)} required/>
                 <br />
-                <label htmlFor='date'>Date Attended:</label>
-                <input id='date' value={date} onChange={e => setDate(e.target.value)} required/>
+                <label style={{width:'125px'}} htmlFor='date'>Date Attended:</label>
+                <input placeholder='Ex: 01/01/2020' style={{borderRadius:'10px'}} id='date' value={date} onChange={e => setDate(e.target.value)} required/>
                 <br />
-                <button id='resetForm' onClick={resetForm} type='button'>Reset Review</button>
-                <button id="submitReview" onClick={handleSubmit} type="button">Submit Review!</button>
+                <Button color='secondary' style={{marginLeft: '10px', marginRight:'25px'}} id='resetForm' onClick={resetForm} type='button'>Reset Review</Button>
+                <Button color='success' style={{}} id="submitReview" onClick={handleSubmit} type="button">Submit Review!</Button>
             </form>
             : null}
     </div>

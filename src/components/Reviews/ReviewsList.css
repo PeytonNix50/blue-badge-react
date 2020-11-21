@@ -1,3 +1,12 @@
 .cardDiv {
-    display: inline;
+    display: block;
+    margin-left: 100px;
+    margin-right: auto;
 }
+@media screen and (max-width: 600px) {
+    .cardDiv {
+      width: 100%;
+      display: block;
+      margin-bottom: 20px;
+    }
+  }

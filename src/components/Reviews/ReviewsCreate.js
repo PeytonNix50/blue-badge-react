@@ -41,34 +41,34 @@ const ReviewsCreate = (props) => {
           .then(rObj => {
               console.log(rObj)
               resetForm()
-              props.fetchReviews()
               history.push('/')
+              props.fetchReviews()
           })
     }
 
     return (
         <div>
-            <form>
-                <label htmlFor='trailName'>Trail Name:</label>
-                <input id='trailName' value={trailName} onChange={e => setTrailName(e.target.value)} required/>
+            <form style={{marginLeft: '450px'}}>
+                <label style={{width:'125px'}} htmlFor='trailName'>Trail Name:</label>
+                <input placeholder='Ex: Pacific Crest Trail' style={{borderRadius:'10px'}} id='trailName' value={trailName} onChange={e => setTrailName(e.target.value)} required/>
                 <br />
-                <label htmlFor='rating'>Rating:</label>
-                <input id='rating' value={rating} onChange={e => setRating(e.target.value)} type="number" min="1" max="5" required/>
+                <label style={{width:'125px'}} htmlFor='rating'>Rating:</label>
+                <input placeholder='Give a Rating 1-5' style={{borderRadius:'10px', width:'185px'}} id='rating' value={rating} onChange={e => setRating(e.target.value)} type="number" min="1" max="5" required/>
                 <br />
-                <label htmlFor='location'>Location:</label>
-                <input id='location' value={location} onChange={e => setLocation(e.target.value)} required/>
+                <label style={{width:'125px'}} htmlFor='location'>Location:</label>
+                <input placeholder='Ex: California' style={{borderRadius:'10px'}} id='location' value={location} onChange={e => setLocation(e.target.value)} required/>
                 <br />
-                <label htmlFor='description'>Review:</label>
-                <input id='description' value={description} onChange={e => setDescription(e.target.value)} />
+                <label style={{width:'125px'}} htmlFor='description'>Review:</label>
+                <input placeholder='Type Your Review' style={{borderRadius:'10px'}} id='description' value={description} onChange={e => setDescription(e.target.value)} />
                 <br />
-                <label htmlFor='date'>Date Attended:</label>
-                <input id='date' value={date} onChange={e => setDate(e.target.value)} required/>
+                <label style={{width:'125px'}} htmlFor='date'>Date Attended:</label>
+                <input placeholder='Ex: 01/01/2020' style={{borderRadius:'10px'}} id='date' value={date} onChange={e => setDate(e.target.value)} required/>
                 <br />
-                <Button id='resetForm' onClick={resetForm} type='button'>Reset Review</Button>
-                <Button id="submitReview" onClick={handleSubmit} type="submit">Submit Review!</Button>
+                <Button color='secondary' style={{marginLeft: '20px'}} id='resetForm' onClick={resetForm} type='button'>Reset Review</Button>
+                <Button color='success' style={{marginLeft: '15px'}} id="submitReview" onClick={handleSubmit} type="submit">Submit Review!</Button>
             </form>
             <br />
-            <ReviewsList />
+            {/* <ReviewsList /> */}
         </div>
     )
 }

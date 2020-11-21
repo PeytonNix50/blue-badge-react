@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 // import './Auth.css'
+import { Button } from 'reactstrap';
+
 
 const Auth = (props) => {
 
@@ -42,32 +44,32 @@ const Auth = (props) => {
         <div>
           <label htmlFor="firstName">First Name</label>
           <br/>
-          <input id="firstName" value={firstName} onChange={e => setFirstName(e.target.value)} />
+          <input style={{borderRadius: '10px'}} id="firstName" value={firstName} onChange={e => setFirstName(e.target.value)} />
           <br/>
           <label htmlFor="lastName">Last Name</label>
           <br/>
-          <input id="lastName" value={lastName} onChange={e => setLastName(e.target.value)} />
+          <input style={{borderRadius: '10px'}} id="lastName" value={lastName} onChange={e => setLastName(e.target.value)} />
         </div>
       )
     }
   }
 
   return (
-    <form>
-      <h1>{ login ? 'Login' : 'Signup' }</h1>
+    <form style={{marginLeft: '450px'}}>
+      <h1>{ login ? 'Login' : 'Register' }</h1>
 
       <label htmlFor="email">Email</label>
       <br/>
-      <input id="email" value={email} onChange={e => setEmail(e.target.value)} />
+      <input style={{borderRadius: '10px'}} id="email" value={email} onChange={e => setEmail(e.target.value)} />
       <br/>
       <label htmlFor="password">Password</label>
       <br/>
-      <input type="password" id="password"  value={password} onChange={e => setPassword(e.target.value)} />
+      <input style={{borderRadius: '10px'}} type="password" id="password" minLength='5' value={password} onChange={e => setPassword(e.target.value)} />
       <br/>
       {signupFields()}
       <br/>
-      <button type="button" onClick={loginToggle}>{login ? "Click Here to Register" : "Click Here to Login"}</button>
-      <button onClick={handleSubmit}>Submit</button>
+      <Button style={{marginLeft: '-20px'}} type="button" onClick={loginToggle}>{login ? "Click Here to Register" : "Click Here to Login"}</Button>
+      <Button style={{marginLeft: '15px'}} onClick={handleSubmit}>Submit</Button>
     </form>
   )
 }
