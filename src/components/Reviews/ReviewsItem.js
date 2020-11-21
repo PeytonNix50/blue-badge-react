@@ -29,11 +29,11 @@ const ReviewsItem = (props) => {
                     <br />
                     <CardSubtitle tag="h6">Rating: {props.rev.rating}</CardSubtitle>
                     <br />
-                    <CardSubtitle tag="h6">{props.rev.location}</CardSubtitle>
+                    <CardSubtitle tag="h6">Location: {props.rev.location}</CardSubtitle>
                     <br />
                     <CardText>{props.rev.description}</CardText>
                     <br />
-                    <CardSubtitle tag="h6">{props.rev.date}</CardSubtitle>
+                    <CardSubtitle tag="h6">Date: {props.rev.date}</CardSubtitle>
                     <br />
                     {props.rev.owner ===  props.userId ? <Button color= "danger" id='deleteReview' onClick={() => {deleteReviews(props.rev)}} type='button'>Delete Review</Button>  : <div></div>}
                     <br />

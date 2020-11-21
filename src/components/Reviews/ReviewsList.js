@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ReviewsItem from './ReviewsItem';
+import './ReviewsList.css';
 
 
 const ReviewsList = (props) => {
@@ -32,7 +33,7 @@ const ReviewsList = (props) => {
     // }
 
     return(
-        <div>
+        <div className="cardDiv">
             {reviews.map((revObj, i) => <ReviewsItem fetchReviews={props.fetchReviews} rev={revObj} key={i} userId={props.userId} />)}
         </div>
     )

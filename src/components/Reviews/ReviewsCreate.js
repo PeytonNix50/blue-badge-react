@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {useHistory} from 'react-router-dom';
 import ReviewsList from './ReviewsList';
+import { Button, Input, Label } from 'reactstrap';
 
 
 const ReviewsCreate = (props) => {
@@ -58,13 +59,13 @@ const ReviewsCreate = (props) => {
                 <input id='location' value={location} onChange={e => setLocation(e.target.value)} required/>
                 <br />
                 <label htmlFor='description'>Review:</label>
-                <input id='description' value={description} onChange={e => setDescription(e.target.value)} required/>
+                <input id='description' value={description} onChange={e => setDescription(e.target.value)} />
                 <br />
                 <label htmlFor='date'>Date Attended:</label>
                 <input id='date' value={date} onChange={e => setDate(e.target.value)} required/>
                 <br />
-                <button id='resetForm' onClick={resetForm} type='button'>Reset Review</button>
-                <button id="submitReview" onClick={handleSubmit} type="submit">Submit Review!</button>
+                <Button id='resetForm' onClick={resetForm} type='button'>Reset Review</Button>
+                <Button id="submitReview" onClick={handleSubmit} type="submit">Submit Review!</Button>
             </form>
             <br />
             <ReviewsList />

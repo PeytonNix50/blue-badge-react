@@ -45,7 +45,7 @@ function App() {
       }
       // create in ternary so user must have web token to create review but doesn't need to be logged in to see reviews
       return (
-          <div className='example'>
+          <div className='appBody'>
             <Router>
               <NavFile clearToken={clearToken} />
               { !sessionToken ? <Auth updateToken={updateToken} /> :
@@ -57,6 +57,8 @@ function App() {
                   <ReviewsList userId={userId} fetchReviews={fetchReviews} />
                 </Route>
               </Switch> }
+              <br />
+              <ReviewsList />
             </Router>
           </div>
       );
