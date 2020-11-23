@@ -57,7 +57,7 @@ function App() {
       }
       // create in ternary so user must have web token to create review but doesn't need to be logged in to see reviews
       return (
-          <div className='appBody'>
+          <div className='appBody' style={{height:'100%'}}>
             <Router>
               <NavFile clearToken={clearToken} />
               { !sessionToken ? <Auth updateToken={updateToken} /> :
@@ -72,7 +72,7 @@ function App() {
             <input placeholder='Ex: Pacific Crest Trail' style={{borderRadius: '10px', width:'300px', marginBottom:'20px', marginLeft:'385px', marginRight:'10px', fontFamily:'Roboto'}} id='name' onChange={e => setName(e.target.value)} />
             <Button style={{fontFamily:'Roboto'}} onClick={handleSearch}>Search</Button>
             <br />
-            {!name === '' ? <ReviewsSearch rev={rev} /> : <ReviewsList userId={userId} fetchReviews={fetchReviews} reviews={reviews} />}
+            {name ? <ReviewsSearch rev={rev} /> : <ReviewsList userId={userId} fetchReviews={fetchReviews} reviews={reviews} />}
             </Router>
           </div>
       );
