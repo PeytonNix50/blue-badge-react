@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import ReviewsItem from './ReviewsItem';
 import './ReviewsList.css';
 

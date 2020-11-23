@@ -18,7 +18,6 @@ const Auth = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-
     const url = `http://localhost:8080/user/${login ? 'login' : 'register'}`
     const body = {
       firstName: firstName,
@@ -26,6 +25,7 @@ const Auth = (props) => {
       email: email,
       password: password
     }
+    if (password.length > 4) {
     fetch(url, {
       method: 'POST',
       headers: {
@@ -34,7 +34,9 @@ const Auth = (props) => {
       body: JSON.stringify(body)
     }).then(r => r.json())
       .then(rObj => props.updateToken(rObj.sessionToken, rObj.user.id))
-  }
+  } else {
+    window.alert("Password must be at least 5 characters")
+  }}
 
   const signupFields = () => {
     if (login) {
@@ -55,9 +57,8 @@ const Auth = (props) => {
   }
 
   return (
-    <form style={{marginLeft: '450px'}}>
+    <form style={{marginLeft: '450px', fontFamily:'Roboto'}}>
       <h1>{ login ? 'Login' : 'Register' }</h1>
-
       <label htmlFor="email">Email</label>
       <br/>
       <input style={{borderRadius: '10px'}} id="email" value={email} onChange={e => setEmail(e.target.value)} />
@@ -69,7 +70,7 @@ const Auth = (props) => {
       {signupFields()}
       <br/>
       <Button style={{marginLeft: '-20px'}} type="button" onClick={loginToggle}>{login ? "Click Here to Register" : "Click Here to Login"}</Button>
-      <Button style={{marginLeft: '15px'}} onClick={handleSubmit}>Submit</Button>
+      <Button style={{marginLeft: '15px'}} onClick={handleSubmit} type='submit'>Submit</Button>
     </form>
   )
 }

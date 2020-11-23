@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
+import React from 'react';
 import ReviewsEdit from './ReviewsEdit';
 import {
-    Card, CardImg, CardText, CardBody,
+    Card, CardText, CardBody,
     CardTitle, CardSubtitle, Button, Row, Col
   } from 'reactstrap';
 import './ReviewsItem.css';
@@ -23,7 +23,7 @@ const ReviewsItem = (props) => {
         <div className="cardDiv">
             <Row>
                 <Col xs="7">
-                <Card body inverse style={{backgroundColor: '#333', borderColor: '#333', opacity:'0.8', borderRadius:'75px'}}>
+                <Card body inverse style={{backgroundColor: '#333', borderColor: '#333', opacity:'0.8', borderRadius:'75px', fontFamily:'Roboto'}}>
                     <CardBody body className="text-center">
                     <CardTitle tag='h5'>{props.rev.trailName}</CardTitle>
                     <br />

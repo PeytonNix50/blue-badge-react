@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import {useHistory} from 'react-router-dom';
-import ReviewsList from './ReviewsList';
-import { Button, Input, Label } from 'reactstrap';
+import { Button } from 'reactstrap';
 
 
 const ReviewsCreate = (props) => {
