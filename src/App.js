@@ -7,7 +7,7 @@ import ReviewsList from './components/Reviews/ReviewsList';
 import { Switch, BrowserRouter as Router, Route} from 'react-router-dom';
 import ReviewsSearch from './components/Reviews/ReviewsSearch';
 import { Button } from 'reactstrap';
-import API_URL from '../../env';
+import API_URL from './env';
 
 
 function App() {
