@@ -5,11 +5,12 @@ import {
     CardTitle, CardSubtitle, Button, Row, Col
   } from 'reactstrap';
 import './ReviewsItem.css';
+import API_URL from '../../env';
 
 const ReviewsItem = (props) => {
 
     const deleteReviews = (rev) => {
-        fetch(`http://localhost:8080/reviews/${props.rev.id}`, {
+        fetch(`${API_URL}/reviews/${props.rev.id}`, {
             method: 'DELETE',
             headers: new Headers({
                 'Content-Type': 'application/json',

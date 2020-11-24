@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {useHistory} from 'react-router-dom';
 import {Button} from 'reactstrap';
+import API_URL from '../../env';
 
 const ReviewsEdit = (props) => {
 
@@ -45,7 +46,7 @@ const ReviewsEdit = (props) => {
             date: date || props.rev.date
         }
 
-        fetch(`http://localhost:8080/reviews/${props.rev.id}`, {
+        fetch(`${API_URL}/reviews/${props.rev.id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

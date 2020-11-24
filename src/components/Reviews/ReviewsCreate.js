@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {useHistory} from 'react-router-dom';
 import { Button } from 'reactstrap';
+import API_URL from '../../env';
 
 
 const ReviewsCreate = (props) => {
@@ -29,7 +30,7 @@ const ReviewsCreate = (props) => {
             description: description,
             date: date
         }
-        fetch('http://localhost:8080/reviews/', {
+        fetch(`${API_URL}/reviews/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

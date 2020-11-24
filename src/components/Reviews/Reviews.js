@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ReviewsList from './ReviewsList';
+import API_URL from '../../env';
 
 
 
@@ -14,7 +15,7 @@ const Reviews = (props) => {
     )
 
     const fetchReviews = () => {
-        fetch('http://localhost:8080/reviews', {
+        fetch(`${API_URL}/reviews`, {
             method: 'GET'
         }).then(r => r.json())
           .then(rArr => setReviews(rArr))

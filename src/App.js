@@ -7,6 +7,7 @@ import ReviewsList from './components/Reviews/ReviewsList';
 import { Switch, BrowserRouter as Router, Route} from 'react-router-dom';
 import ReviewsSearch from './components/Reviews/ReviewsSearch';
 import { Button } from 'reactstrap';
+import API_URL from '../../env';
 
 
 function App() {
@@ -18,7 +19,7 @@ function App() {
     const [name, setName] = useState('')
 
     const handleSearch = () => {
-      fetch(`http://localhost:8080/reviews/name/${name}`, {
+      fetch(`${API_URL}/reviews/name/${name}`, {
           method: 'GET',
       }).then(r => r.json())
         .then(rArr => setRev(rArr))
@@ -26,7 +27,7 @@ function App() {
 
 
     const fetchReviews = () => {
-      fetch('http://localhost:8080/reviews', {
+      fetch(`${API_URL}/reviews`, {
           method: 'GET'
       }).then(r => r.json())
         .then(rArr => setReviews(rArr))

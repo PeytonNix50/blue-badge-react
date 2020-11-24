@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 // import './Auth.css'
 import { Button } from 'reactstrap';
+import API_URL from '../../env';
 
 
 const Auth = (props) => {
@@ -18,7 +19,7 @@ const Auth = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    const url = `http://localhost:8080/user/${login ? 'login' : 'register'}`
+    const url = `${API_URL}/user/${login ? 'login' : 'register'}`
     const body = {
       firstName: firstName,
       lastName: lastName,
