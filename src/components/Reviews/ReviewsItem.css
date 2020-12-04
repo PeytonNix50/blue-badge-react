@@ -1,3 +1,18 @@
-/* .cardDiv {
-   background-color: rgba(211,211,211, 0.8)
-} */
+@media screen and (min-width: 300px) {
+   .cardDiv {
+     margin-left: 2vw;
+     margin-right: 2vw;
+     display: block;
+     width: 120vw;
+     margin-bottom: 20px;
+   }
+ }
+
+ /* @media screen and (max-width: 400px) {
+   #deleteReview {
+     margin-left: 2vw;
+     margin-right: 2vw;
+     display: block;
+     margin-bottom: 20px;
+   }
+ } */

@@ -3,4 +3,51 @@
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
+    overflow-x: hidden;
+}
+
+#name {
+    margin-left: 100vw;
+    display: block;
+    margin-bottom: 20px;
+}
+
+#search {
+    margin-left: 36vw;
+    display: block;
+    margin-bottom: 20px;
+}
+
+@media screen and (min-width: 400px) {
+    #name {
+      margin-left: 2vw;
+      display: block;
+      margin-bottom: 20px;
+    }
+}
+
+
+@media screen and (min-width: 400px) {
+    #search {
+      margin-left: 5vw;
+      display: block;
+      margin-bottom: 20px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    #name {
+        margin-left: 44vw;
+        display: block;
+        width: 100vw;
+        margin-bottom: 20px;
+      }
+}
+
+@media screen and (max-width: 1024px) {
+    #search {
+        margin-left: 50vw;
+        display: block;
+        margin-bottom: 20px;
+      }
 }

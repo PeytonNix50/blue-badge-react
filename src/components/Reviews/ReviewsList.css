@@ -1,12 +1,24 @@
 .cardDiv {
     display: block;
-    margin-left: 100px;
+    margin-left: 8vw;
     margin-right: auto;
+    width: 80vw;
 }
-@media screen and (max-width: 600px) {
-    .cardDiv {
-      width: 100%;
+@media screen and (max-width: 500px) {
+  .cardDiv {
+    margin-left: 4vw;
+    margin-right: 8vw;
+    width: 600px;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+/* @media screen and (max-width: 1024px) {
+  .cardDiv {
+      margin-left: 12.5vw;
       display: block;
+      width: 100vw;
       margin-bottom: 20px;
     }
-  }
+} */

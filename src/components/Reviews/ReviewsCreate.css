@@ -25,3 +25,17 @@
       align-items: center;
     }
   }
+
+.createReview {
+      margin-left: 27vw;
+      display: block;
+}
+
+  /* iPad Pro PORTRAIT */
+@media screen and (max-width: 1024px) {
+    #reviewForm {
+        margin-left: 36.5vw;
+        display: block;
+        margin-bottom: 20px;
+      }
+}

@@ -57,16 +57,9 @@ const Auth = (props) => {
     }
   }
 
-<<<<<<< HEAD
-    return (
-    <form>
-      <h1>{ login ? 'Login' : 'Signup' }</h1>
-
-=======
   return (
     <form style={{marginLeft: '450px', fontFamily:'Roboto'}}>
       <h1>{ login ? 'Login' : 'Register' }</h1>
->>>>>>> a57169f8246516411fed8ac672981046f44044bc
       <label htmlFor="email">Email</label>
       <br/>
       <input style={{borderRadius: '10px'}} id="email" value={email} onChange={e => setEmail(e.target.value)} />
