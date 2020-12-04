@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {useHistory} from 'react-router-dom';
 import { Button } from 'reactstrap';
+import './ReviewsCreate.css';
 import API_URL from '../../env';
 
 
@@ -48,12 +49,12 @@ const ReviewsCreate = (props) => {
 
     return (
         <div>
-            <form style={{marginLeft: '450px'}}>
+            <form id='reviewForm' className='createReview'>
                 <label style={{width:'125px'}} htmlFor='trailName'>Trail Name:</label>
                 <input placeholder='Ex: Pacific Crest Trail' style={{borderRadius:'10px'}} id='trailName' value={trailName} onChange={e => setTrailName(e.target.value)} required/>
                 <br />
                 <label style={{width:'125px'}} htmlFor='rating'>Rating:</label>
-                <input placeholder='Give a Rating 1-5' style={{borderRadius:'10px', width:'185px'}} id='rating' value={rating} onChange={e => setRating(e.target.value)} type="number" min="1" max="5" required/>
+                <input placeholder='Give a Rating 1-5' style={{borderRadius:'10px', width:'175px'}} id='rating' value={rating} onChange={e => setRating(e.target.value)} type="number" min="1" max="5" required/>
                 <br />
                 <label style={{width:'125px'}} htmlFor='location'>Location:</label>
                 <input placeholder='Ex: California' style={{borderRadius:'10px'}} id='location' value={location} onChange={e => setLocation(e.target.value)} required/>

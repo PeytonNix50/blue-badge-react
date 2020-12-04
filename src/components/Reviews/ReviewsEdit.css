@@ -1,0 +1,12 @@
+#editForm {
+    margin-left: 11vw;
+    display: block;
+  }
+
+
+@media screen and (max-width: 300px) {
+    #editForm {
+      margin-left: -15px;
+      display: block;
+    }
+}

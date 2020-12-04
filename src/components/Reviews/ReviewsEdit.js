@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {useHistory} from 'react-router-dom';
 import {Button} from 'reactstrap';
+import './ReviewsEdit.css';
 import API_URL from '../../env';
 
 const ReviewsEdit = (props) => {
@@ -68,12 +69,12 @@ const ReviewsEdit = (props) => {
     <div>
         <Button color="warning" type="button" onClick={toggle}>Edit Review</Button>
         {showEdit?
-            <form style={{textAlign:'left', marginLeft:'200px', marginTop:'25px'}}>
+            <form id='editForm' style={{textAlign:'left', marginTop:'25px'}}>
                 <label style={{width:'125px'}} htmlFor='trailName'>Trail Name:</label>
                 <input placeholder='Ex: Pacific Crest Trail' style={{borderRadius:'10px'}} id='trailName' value={trailName} onChange={e => setTrailName(e.target.value)} required />
                 <br />
                 <label style={{width:'125px'}} htmlFor='rating'>Rating:</label>
-                <input style={{borderRadius:'10px', width:'185px'}} id='rating' value={rating} onChange={e => setRating(e.target.value)} type="number" min="1" max="5" placeholder='Give a Rating 1-5' required/>
+                <input style={{borderRadius:'10px', width:'175px'}} id='rating' value={rating} onChange={e => setRating(e.target.value)} type="number" min="1" max="5" placeholder='Give a Rating 1-5' required/>
                 <br />
                 <label style={{width:'125px'}} htmlFor='location'>Location:</label>
                 <input placeholder='Ex: California' style={{borderRadius:'10px'}} id='location' value={location} onChange={e => setLocation(e.target.value)} required/>

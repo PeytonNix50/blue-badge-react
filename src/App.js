@@ -70,8 +70,8 @@ function App() {
                   {/* <ReviewsList userId={userId} fetchReviews={fetchReviews} /> */}
                 </Route>
               </Switch> }
-            <input placeholder='Ex: Pacific Crest Trail' style={{borderRadius: '10px', width:'300px', marginBottom:'20px', marginLeft:'385px', marginRight:'10px', fontFamily:'Roboto'}} id='name' onChange={e => setName(e.target.value)} />
-            <Button style={{fontFamily:'Roboto'}} onClick={handleSearch}>Search</Button>
+            <input placeholder='Ex: Pacific Crest Trail' style={{borderRadius: '10px', marginLeft:'35vw', width:'200px', marginBottom:'20px', fontFamily:'Roboto'}} id='name' onChange={e => setName(e.target.value)} />
+            <Button id='search' style={{marginLeft: '44vw', fontFamily:'Roboto'}} onClick={handleSearch}>Search</Button>
             <br />
             {name ? <ReviewsSearch rev={rev} /> : <ReviewsList userId={userId} fetchReviews={fetchReviews} reviews={reviews} />}
             </Router>
