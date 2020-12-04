@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
 // import './Auth.css'
+import { Button } from 'reactstrap';
+import API_URL from '../../env';
+
 
 const Auth = (props) => {
 
@@ -16,14 +19,14 @@ const Auth = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-
-    const url = `http://localhost:8080/user/${login ? 'login' : 'register'}`
+    const url = `${API_URL}/user/${login ? 'login' : 'register'}`
     const body = {
       firstName: firstName,
       lastName: lastName,
       email: email,
       password: password
     }
+    if (password.length > 4) {
     fetch(url, {
       method: 'POST',
       headers: {
@@ -32,7 +35,9 @@ const Auth = (props) => {
       body: JSON.stringify(body)
     }).then(r => r.json())
       .then(rObj => props.updateToken(rObj.sessionToken, rObj.user.id))
-  }
+  } else {
+    window.alert("Password must be at least 5 characters")
+  }}
 
   const signupFields = () => {
     if (login) {
@@ -42,32 +47,38 @@ const Auth = (props) => {
         <div>
           <label htmlFor="firstName">First Name</label>
           <br/>
-          <input id="firstName" value={firstName} onChange={e => setFirstName(e.target.value)} />
+          <input style={{borderRadius: '10px'}} id="firstName" value={firstName} onChange={e => setFirstName(e.target.value)} />
           <br/>
           <label htmlFor="lastName">Last Name</label>
           <br/>
-          <input id="lastName" value={lastName} onChange={e => setLastName(e.target.value)} />
+          <input style={{borderRadius: '10px'}} id="lastName" value={lastName} onChange={e => setLastName(e.target.value)} />
         </div>
       )
     }
   }
 
+<<<<<<< HEAD
     return (
     <form>
       <h1>{ login ? 'Login' : 'Signup' }</h1>
 
+=======
+  return (
+    <form style={{marginLeft: '450px', fontFamily:'Roboto'}}>
+      <h1>{ login ? 'Login' : 'Register' }</h1>
+>>>>>>> a57169f8246516411fed8ac672981046f44044bc
       <label htmlFor="email">Email</label>
       <br/>
-      <input id="email" value={email} onChange={e => setEmail(e.target.value)} />
+      <input style={{borderRadius: '10px'}} id="email" value={email} onChange={e => setEmail(e.target.value)} />
       <br/>
       <label htmlFor="password">Password</label>
       <br/>
-      <input type="password" id="password"  value={password} onChange={e => setPassword(e.target.value)} />
+      <input style={{borderRadius: '10px'}} type="password" id="password" minLength='5' value={password} onChange={e => setPassword(e.target.value)} />
       <br/>
       {signupFields()}
       <br/>
-      <button type="button" onClick={loginToggle}>{login ? "Click Here to Register" : "Click Here to Login"}</button>
-      <button onClick={handleSubmit}>Submit</button>
+      <Button style={{marginLeft: '-20px'}} type="button" onClick={loginToggle}>{login ? "Click Here to Register" : "Click Here to Login"}</Button>
+      <Button style={{marginLeft: '15px'}} onClick={handleSubmit} type='submit'>Submit</Button>
     </form>
 
   )

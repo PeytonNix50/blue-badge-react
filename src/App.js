@@ -5,6 +5,9 @@ import ReviewsCreate from './components/Reviews/ReviewsCreate';
 import NavFile from './components/Navbar/Navbar';
 import ReviewsList from './components/Reviews/ReviewsList';
 import { Switch, BrowserRouter as Router, Route} from 'react-router-dom';
+import ReviewsSearch from './components/Reviews/ReviewsSearch';
+import { Button } from 'reactstrap';
+import API_URL from './env';
 
 
 function App() {
@@ -12,10 +15,19 @@ function App() {
     const [sessionToken, setSessionToken] = useState(undefined);
     const [userId, setUserId] = useState(undefined);
     const [reviews, setReviews] = useState([])
+    const [rev, setRev] = useState([])
+    const [name, setName] = useState('')
+
+    const handleSearch = () => {
+      fetch(`${API_URL}/reviews/name/${name}`, {
+          method: 'GET',
+      }).then(r => r.json())
+        .then(rArr => setRev(rArr))
+  }
 
 
     const fetchReviews = () => {
-      fetch('http://localhost:8080/reviews', {
+      fetch(`${API_URL}/reviews`, {
           method: 'GET'
       }).then(r => r.json())
         .then(rArr => setReviews(rArr))
@@ -28,6 +40,7 @@ function App() {
             setSessionToken(token)
             setUserId(parseInt(localStorage.getItem('id')))  //parseInt makes user id an integer
           }
+          handleSearch()
         }, []
       )
     
@@ -45,7 +58,7 @@ function App() {
       }
       // create in ternary so user must have web token to create review but doesn't need to be logged in to see reviews
       return (
-          <div className='appBody'>
+          <div className='appBody' style={{height:'100%'}}>
             <Router>
               <NavFile clearToken={clearToken} />
               { !sessionToken ? <Auth updateToken={updateToken} /> :
@@ -54,11 +67,13 @@ function App() {
                   <ReviewsCreate fetchReviews={fetchReviews} sessionToken={sessionToken} />
                 </Route>
                 <Route path="/">
-                  <ReviewsList userId={userId} fetchReviews={fetchReviews} />
+                  {/* <ReviewsList userId={userId} fetchReviews={fetchReviews} /> */}
                 </Route>
               </Switch> }
-              <br />
-              <ReviewsList />
+            <input placeholder='Ex: Pacific Crest Trail' style={{borderRadius: '10px', width:'300px', marginBottom:'20px', marginLeft:'385px', marginRight:'10px', fontFamily:'Roboto'}} id='name' onChange={e => setName(e.target.value)} />
+            <Button style={{fontFamily:'Roboto'}} onClick={handleSearch}>Search</Button>
+            <br />
+            {name ? <ReviewsSearch rev={rev} /> : <ReviewsList userId={userId} fetchReviews={fetchReviews} reviews={reviews} />}
             </Router>
           </div>
       );
